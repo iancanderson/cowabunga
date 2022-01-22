@@ -1,11 +1,11 @@
-# enumerable
+# cowabunga
 
 Handy slice functions using go generics
 
 ## Usage
 
 ```go
-import "github.com/iancanderson/enumerable"
+import "github.com/iancanderson/cowabunga"
 
 ints := []int{1, 2, 3}
 
