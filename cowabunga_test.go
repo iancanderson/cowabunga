@@ -1,4 +1,4 @@
-package enumerable
+package cowabunga
 
 import (
 	"reflect"

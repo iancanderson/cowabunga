@@ -1,3 +1,3 @@
-module iancanderson.com/enumerable
+module iancanderson.com/cowabunga
 
 go 1.18

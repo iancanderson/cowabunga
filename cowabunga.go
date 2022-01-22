@@ -1,4 +1,4 @@
-package enumerable
+package cowabunga
 
 // Returns true if all elements in input
 // give a truthy result when passed to f
