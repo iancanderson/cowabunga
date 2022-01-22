@@ -25,6 +25,26 @@ func TestAll(t *testing.T) {
 	}
 }
 
+func TestAny(t *testing.T) {
+	ints := []int{1, 2, 3}
+
+	cases := []struct {
+		in          func(int) bool
+		want        bool
+		description string
+	}{
+		{func(n int) bool { return n > 0 }, true, "n > 0"},
+		{func(n int) bool { return n > 1 }, true, "n > 1"},
+		{func(n int) bool { return n > 3 }, false, "n > 3"},
+	}
+	for _, c := range cases {
+		got := Any(ints, c.in)
+		if got != c.want {
+			t.Errorf("Any(%v, %v) == %t, want %t", ints, c.description, got, c.want)
+		}
+	}
+}
+
 func TestFilter(t *testing.T) {
 	ints := []int{1, 2, 3}
 

@@ -11,6 +11,17 @@ func All[T any](input []T, f func(T) bool) bool {
 	return true
 }
 
+// Returns true if any elements in input
+// give a truthy result when passed to f
+func Any[T any](input []T, f func(T) bool) bool {
+	for _, el := range input {
+		if f(el) {
+			return true
+		}
+	}
+	return false
+}
+
 // Maps each input element of type T to type K using function f
 func Map[T, K any](input []T, f func(T) K) []K {
 	output := make([]K, len(input))

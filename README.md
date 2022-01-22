@@ -17,4 +17,7 @@ bigNumbers := Filter(ints, func(n int) bool { return n > 2 })
 
 allAreBig := All(ints, func(n int) bool { return n > 2 })
 // false
+
+anyAreBig := Any(ints, func(n int) bool { return n > 2 })
+// true
 ```
