@@ -1,6 +1,6 @@
 # cowabunga
 
-Handy slice functions using go generics
+Handy slice 🍕 functions using go generics
 
 ## Usage
 
