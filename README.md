@@ -24,6 +24,12 @@ lastTwo := Drop(ints, 1)
 lastOne := DropWhile(ints, func(n int) bool { return n < 3 })
 // [3]
 
+EachCons(ints, 2, func(nums []int) {
+	fmt.Println(nums)
+})
+// [1, 2]
+// [2, 3]
+
 bigNumbers := Filter(ints, func(n int) bool { return n > 2 })
 // [3]
 

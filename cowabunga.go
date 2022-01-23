@@ -52,6 +52,19 @@ func DropWhile[T any](input []T, f func(T) bool) []T {
 	return input[n:]
 }
 
+// Calls the function with each successive overlapped n-tuple
+// of elements
+func EachCons[T any](input []T, n int, f func([]T)) {
+	inputLen := len(input)
+	for start, _ := range input {
+		if start+n > inputLen {
+			return
+		} else {
+			f(input[start : start+n])
+		}
+	}
+}
+
 // Returns a new slice containing all elements of input
 // that give a truthy result when passed to function f
 func Filter[T any](input []T, f func(T) bool) []T {

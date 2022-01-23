@@ -103,6 +103,20 @@ func TestDropWhile(t *testing.T) {
 	}
 }
 
+func TestEachCons(t *testing.T) {
+	ints := []int{1, 2, 3}
+
+	got := [][]int{}
+	EachCons(ints, 2, func(sequence []int) {
+		got = append(got, sequence)
+	})
+
+	want := [][]int{{1, 2}, {2, 3}}
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("EachCons(%v, %v) == %v, want %v", ints, 2, got, want)
+	}
+}
+
 func TestFilter(t *testing.T) {
 	ints := []int{1, 2, 3}
 
