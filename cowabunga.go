@@ -1,6 +1,8 @@
 package cowabunga
 
-import "reflect"
+import (
+	"reflect"
+)
 
 // Returns true if all elements in input
 // give a truthy result when passed to f
@@ -56,11 +58,24 @@ func DropWhile[T any](input []T, f func(T) bool) []T {
 // of elements
 func EachCons[T any](input []T, n int, f func([]T)) {
 	inputLen := len(input)
-	for start, _ := range input {
+	for start := range input {
 		if start+n > inputLen {
 			return
 		} else {
 			f(input[start : start+n])
+		}
+	}
+}
+
+// Calls the function with each successive disjoint n-tuple
+// of elements
+func EachSlice[T any](input []T, n int, f func([]T)) {
+	inputLen := len(input)
+	for start := 0; start < inputLen; start += n {
+		if start+n < inputLen {
+			f(input[start : start+n])
+		} else {
+			f(input[start:inputLen])
 		}
 	}
 }
