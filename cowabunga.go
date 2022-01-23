@@ -1,5 +1,7 @@
 package cowabunga
 
+import "reflect"
+
 // Returns true if all elements in input
 // give a truthy result when passed to f
 func All[T any](input []T, f func(T) bool) bool {
@@ -16,6 +18,15 @@ func All[T any](input []T, f func(T) bool) bool {
 func Any[T any](input []T, f func(T) bool) bool {
 	for _, el := range input {
 		if f(el) {
+			return true
+		}
+	}
+	return false
+}
+
+func IsMember[T any](input []T, member T) bool {
+	for _, el := range input {
+		if reflect.DeepEqual(el, member) {
 			return true
 		}
 	}

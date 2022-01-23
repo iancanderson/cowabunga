@@ -1,3 +1,3 @@
-module github.com/iancanderson.com/cowabunga
+module github.com/iancanderson/cowabunga
 
 go 1.18

@@ -64,6 +64,24 @@ func TestFilter(t *testing.T) {
 	}
 }
 
+func TestIsMember(t *testing.T) {
+	ints := []int{1, 2, 3}
+
+	cases := []struct {
+		in   int
+		want bool
+	}{
+		{1, true},
+		{4, false},
+	}
+	for _, c := range cases {
+		got := IsMember(ints, c.in)
+		if got != c.want {
+			t.Errorf("IsMember(%v, %v) == %t, want %t", ints, c.in, got, c.want)
+		}
+	}
+}
+
 func TestMap(t *testing.T) {
 	ints := []int{1, 2, 3}
 
