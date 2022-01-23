@@ -34,6 +34,12 @@ func Count[T any](input []T, f func(T) bool) int {
 	return result
 }
 
+// Return a new slice excluding the first n elements
+// of input
+func Drop[T any](input []T, n int) []T {
+	return input[n:]
+}
+
 // Returns a new slice containing all elements of input
 // that give a truthy result when passed to function f
 func Filter[T any](input []T, f func(T) bool) []T {
@@ -84,9 +90,5 @@ func Map[T, K any](input []T, f func(T) K) []K {
 // Return a new slice containing the first n elements
 // of input
 func Take[T any](input []T, n int) []T {
-	output := make([]T, 0, n)
-	for i := 0; i < n; i++ {
-		output = append(output, input[i])
-	}
-	return output
+	return input[0:n]
 }

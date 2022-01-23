@@ -18,6 +18,9 @@ anyAreBig := Any(ints, func(n int) bool { return n > 2 })
 numBig := Count(ints, func(n int) bool { return n > 2 })
 // 1
 
+lastTwo := Drop(ints, 1)
+// [2, 3]
+
 bigNumbers := Filter(ints, func(n int) bool { return n > 2 })
 // [3]
 

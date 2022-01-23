@@ -65,6 +65,25 @@ func TestCount(t *testing.T) {
 	}
 }
 
+func TestDrop(t *testing.T) {
+	ints := []int{1, 2, 3}
+
+	cases := []struct {
+		in   int
+		want []int
+	}{
+		{0, []int{1, 2, 3}},
+		{1, []int{2, 3}},
+		{2, []int{3}},
+	}
+	for _, c := range cases {
+		got := Drop(ints, c.in)
+		if !reflect.DeepEqual(got, c.want) {
+			t.Errorf("Drop(%v, %v) == %v, want %v", ints, c.in, got, c.want)
+		}
+	}
+}
+
 func TestFilter(t *testing.T) {
 	ints := []int{1, 2, 3}
 
