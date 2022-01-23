@@ -157,3 +157,22 @@ func TestMap(t *testing.T) {
 		}
 	}
 }
+
+func TestTake(t *testing.T) {
+	ints := []int{1, 2, 3}
+
+	cases := []struct {
+		in   int
+		want []int
+	}{
+		{0, []int{}},
+		{1, []int{1}},
+		{2, []int{1, 2}},
+	}
+	for _, c := range cases {
+		got := Take(ints, c.in)
+		if !reflect.DeepEqual(got, c.want) {
+			t.Errorf("Take(%v, %v) == %v, want %v", ints, c.in, got, c.want)
+		}
+	}
+}

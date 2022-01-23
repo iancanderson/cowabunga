@@ -80,3 +80,13 @@ func Map[T, K any](input []T, f func(T) K) []K {
 	}
 	return output
 }
+
+// Return a new slice containing the first n elements
+// of input
+func Take[T any](input []T, n int) []T {
+	output := make([]T, 0, n)
+	for i := 0; i < n; i++ {
+		output = append(output, input[i])
+	}
+	return output
+}

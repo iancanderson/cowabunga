@@ -32,4 +32,7 @@ lastNum := Last(ints)
 
 strings := Map(ints, func(n int) string { return strconv.Itoa(n + 1) })
 // ["2", "3", "4"]
+
+firstTwo := Take(ints, 2)
+// [1, 2]
 ```
