@@ -84,6 +84,23 @@ func TestFilter(t *testing.T) {
 	}
 }
 
+func TestFirst(t *testing.T) {
+	one := 1
+	cases := []struct {
+		in   []int
+		want *int
+	}{
+		{[]int{1, 2, 3}, &one},
+		{[]int{}, nil},
+	}
+	for _, c := range cases {
+		got := First(c.in)
+		if !(got == nil && c.want == nil) && *got != *c.want {
+			t.Errorf("First(%v) == %v, want %v", c.in, got, c.want)
+		}
+	}
+}
+
 func TestIsMember(t *testing.T) {
 	ints := []int{1, 2, 3}
 
@@ -98,6 +115,23 @@ func TestIsMember(t *testing.T) {
 		got := IsMember(ints, c.in)
 		if got != c.want {
 			t.Errorf("IsMember(%v, %v) == %t, want %t", ints, c.in, got, c.want)
+		}
+	}
+}
+
+func TestLast(t *testing.T) {
+	three := 3
+	cases := []struct {
+		in   []int
+		want *int
+	}{
+		{[]int{1, 2, 3}, &three},
+		{[]int{}, nil},
+	}
+	for _, c := range cases {
+		got := Last(c.in)
+		if !(got == nil && c.want == nil) && *got != *c.want {
+			t.Errorf("Last(%v) == %v, want %v", c.in, got, c.want)
 		}
 	}
 }

@@ -46,6 +46,14 @@ func Filter[T any](input []T, f func(T) bool) []T {
 	return output
 }
 
+func First[T any](input []T) *T {
+	if len(input) > 0 {
+		return &input[0]
+	} else {
+		return nil
+	}
+}
+
 func IsMember[T any](input []T, member T) bool {
 	for _, el := range input {
 		if reflect.DeepEqual(el, member) {
@@ -53,6 +61,15 @@ func IsMember[T any](input []T, member T) bool {
 		}
 	}
 	return false
+}
+
+func Last[T any](input []T) *T {
+	length := len(input)
+	if length > 0 {
+		return &input[length-1]
+	} else {
+		return nil
+	}
 }
 
 // Maps each input element of type T to type K using function f
