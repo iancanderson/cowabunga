@@ -15,8 +15,14 @@ allAreBig := All(ints, func(n int) bool { return n > 2 })
 anyAreBig := Any(ints, func(n int) bool { return n > 2 })
 // true
 
+numBig := Count(ints, func(n int) bool { return n > 2 })
+// 1
+
 bigNumbers := Filter(ints, func(n int) bool { return n > 2 })
 // [3]
+
+hasATwo := IsMember(ints, 2)
+// true
 
 strings := Map(ints, func(n int) string { return strconv.Itoa(n + 1) })
 // ["2", "3", "4"]
