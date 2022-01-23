@@ -24,6 +24,28 @@ func Any[T any](input []T, f func(T) bool) bool {
 	return false
 }
 
+func Count[T any](input []T, f func(T) bool) int {
+	result := 0
+	for _, el := range input {
+		if f(el) {
+			result++
+		}
+	}
+	return result
+}
+
+// Returns a new slice containing all elements of input
+// that give a truthy result when passed to function f
+func Filter[T any](input []T, f func(T) bool) []T {
+	output := make([]T, 0)
+	for _, el := range input {
+		if f(el) {
+			output = append(output, el)
+		}
+	}
+	return output
+}
+
 func IsMember[T any](input []T, member T) bool {
 	for _, el := range input {
 		if reflect.DeepEqual(el, member) {
@@ -38,18 +60,6 @@ func Map[T, K any](input []T, f func(T) K) []K {
 	output := make([]K, len(input))
 	for i, el := range input {
 		output[i] = f(el)
-	}
-	return output
-}
-
-// Returns a new slice containing all elements of input
-// that give a truthy result when passed to function f
-func Filter[T any](input []T, f func(T) bool) []T {
-	output := make([]T, 0)
-	for _, el := range input {
-		if f(el) {
-			output = append(output, el)
-		}
 	}
 	return output
 }

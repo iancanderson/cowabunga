@@ -45,6 +45,26 @@ func TestAny(t *testing.T) {
 	}
 }
 
+func TestCount(t *testing.T) {
+	ints := []int{1, 2, 3}
+
+	cases := []struct {
+		in          func(int) bool
+		want        int
+		description string
+	}{
+		{func(n int) bool { return n > 0 }, 3, "n > 0"},
+		{func(n int) bool { return n > 1 }, 2, "n > 1"},
+		{func(n int) bool { return n > 3 }, 0, "n > 3"},
+	}
+	for _, c := range cases {
+		got := Count(ints, c.in)
+		if got != c.want {
+			t.Errorf("Count(%v, %v) == %v, want %v", ints, c.description, got, c.want)
+		}
+	}
+}
+
 func TestFilter(t *testing.T) {
 	ints := []int{1, 2, 3}
 
