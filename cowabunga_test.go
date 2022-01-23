@@ -84,6 +84,25 @@ func TestDrop(t *testing.T) {
 	}
 }
 
+func TestDropWhile(t *testing.T) {
+	ints := []int{1, 2, 3}
+
+	cases := []struct {
+		in          func(int) bool
+		want        []int
+		description string
+	}{
+		{func(n int) bool { return n < 1 }, ints, "n < 1"},
+		{func(n int) bool { return n < 3 }, []int{3}, "n < 3"},
+	}
+	for _, c := range cases {
+		got := DropWhile(ints, c.in)
+		if !reflect.DeepEqual(got, c.want) {
+			t.Errorf("DropWhile(%v, %v) == %v, want %v", ints, c.description, got, c.want)
+		}
+	}
+}
+
 func TestFilter(t *testing.T) {
 	ints := []int{1, 2, 3}
 

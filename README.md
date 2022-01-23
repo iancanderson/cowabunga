@@ -21,6 +21,9 @@ numBig := Count(ints, func(n int) bool { return n > 2 })
 lastTwo := Drop(ints, 1)
 // [2, 3]
 
+lastOne := DropWhile(ints, func(n int) bool { return n < 3 })
+// [3]
+
 bigNumbers := Filter(ints, func(n int) bool { return n > 2 })
 // [3]
 

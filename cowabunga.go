@@ -40,6 +40,18 @@ func Drop[T any](input []T, n int) []T {
 	return input[n:]
 }
 
+// Return a new slice excluding the first n elements
+// of input where f is true
+func DropWhile[T any](input []T, f func(T) bool) []T {
+	n := 0
+	for _, el := range input {
+		if f(el) {
+			n++
+		}
+	}
+	return input[n:]
+}
+
 // Returns a new slice containing all elements of input
 // that give a truthy result when passed to function f
 func Filter[T any](input []T, f func(T) bool) []T {
