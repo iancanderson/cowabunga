@@ -66,6 +66,9 @@ strings := FlatMap(ints, func(n int) string {
 })
 // ["1", "2", "2", "3", "3", "4"]
 
+byEven := GroupBy(ints, func(n int) bool { return n % 2 == 0 })
+// map[true:[]int{2} false:[]int{1, 3}]
+
 hasATwo := IsMember(ints, 2)
 // true
 

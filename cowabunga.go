@@ -143,6 +143,19 @@ func FlatMap[T, K any](input []T, f func(T) []K) []K {
 	return output
 }
 
+// Returns a Map
+// Each key is a return value from the function f
+// Each value is a slice of those elements
+// for which the function returned that key.
+func GroupBy[T any, K comparable](input []T, f func(T) K) map[K][]T {
+	output := make(map[K][]T)
+	for _, el := range input {
+		key := f(el)
+		output[key] = append(output[key], el)
+	}
+	return output
+}
+
 func IsMember[T any](input []T, member T) bool {
 	for _, el := range input {
 		if reflect.DeepEqual(el, member) {

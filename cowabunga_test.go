@@ -262,6 +262,31 @@ func TestFlatMap(t *testing.T) {
 	}
 }
 
+func TestGroupBy(t *testing.T) {
+	ints := []int{1, 2, 3}
+
+	cases := []struct {
+		in          func(int) bool
+		want        map[bool][]int
+		description string
+	}{
+		{
+			func(n int) bool { return n%2 == 0 },
+			map[bool][]int{
+				true:  {2},
+				false: {1, 3},
+			},
+			"even",
+		},
+	}
+	for _, c := range cases {
+		got := GroupBy(ints, c.in)
+		if !reflect.DeepEqual(got, c.want) {
+			t.Errorf("GroupBy(%v, %v) == %v, want %v", ints, c.description, got, c.want)
+		}
+	}
+}
+
 func TestIsMember(t *testing.T) {
 	ints := []int{1, 2, 3}
 
