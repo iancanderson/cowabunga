@@ -36,6 +36,12 @@ EachSlice(ints, 2, func(nums []int) {
 // [1, 2]
 // [3]
 
+sum := 0
+sum = EachWith(ints, &sum, func(num int, result *int) {
+	*result += n
+})
+// 6
+
 bigNumbers := Filter(ints, func(n int) bool { return n > 2 })
 // [3]
 

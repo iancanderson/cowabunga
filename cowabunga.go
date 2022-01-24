@@ -80,6 +80,15 @@ func EachSlice[T any](input []T, n int, f func([]T)) {
 	}
 }
 
+// Calls the function once for each element,
+// passing both the element and the given argument
+func EachWith[T, W any](input []T, with W, f func(T, W)) W {
+	for _, el := range input {
+		f(el, with)
+	}
+	return with
+}
+
 // Returns a new slice containing all elements of input
 // that give a truthy result when passed to function f
 func Filter[T any](input []T, f func(T) bool) []T {

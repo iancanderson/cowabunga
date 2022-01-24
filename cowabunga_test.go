@@ -131,6 +131,20 @@ func TestEachSlice(t *testing.T) {
 	}
 }
 
+func TestEachWith(t *testing.T) {
+	ints := []int{1, 2, 3}
+	with := 0
+
+	got := EachWith(ints, &with, func(n int, result *int) {
+		*result += n
+	})
+
+	want := 6
+	if *got != want {
+		t.Errorf("EachWith(%v, %v) == %v, want %v", ints, with, got, want)
+	}
+}
+
 func TestFilter(t *testing.T) {
 	ints := []int{1, 2, 3}
 
