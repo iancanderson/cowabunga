@@ -55,6 +55,9 @@ bigNumbersIncremented := FilterMap(ints, func(n int) *string {
 })
 // ["4"]
 
+firstGreaterThanOne := Find(ints, func(n int) bool { return n > 1 })
+// [&2]
+
 firstNum := First(ints)
 // 1
 

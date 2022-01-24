@@ -114,6 +114,17 @@ func FilterMap[T, K any](input []T, f func(T) *K) []K {
 	return output
 }
 
+// Returns the first element for which the function
+// returns a true value.
+func Find[T any](input []T, f func(T) bool) *T {
+	for _, el := range input {
+		if f(el) {
+			return &el
+		}
+	}
+	return nil
+}
+
 func First[T any](input []T) *T {
 	if len(input) > 0 {
 		return &input[0]

@@ -193,6 +193,34 @@ func TestFilterMap(t *testing.T) {
 	}
 }
 
+func TestFind(t *testing.T) {
+	ints := []int{1, 2, 3}
+	two := 2
+
+	cases := []struct {
+		in          func(int) bool
+		want        *int
+		description string
+	}{
+		{
+			func(n int) bool { return n > 1 },
+			&two,
+			"n > 1",
+		},
+		{
+			func(n int) bool { return n > 3 },
+			nil,
+			"n > 3",
+		},
+	}
+	for _, c := range cases {
+		got := Find(ints, c.in)
+		if !(got == nil && c.want == nil) && *got != *c.want {
+			t.Errorf("Find(%v, %v) == %v, want %v", ints, c.description, got, c.want)
+		}
+	}
+}
+
 func TestFirst(t *testing.T) {
 	one := 1
 	cases := []struct {
