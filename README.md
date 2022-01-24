@@ -61,6 +61,11 @@ firstGreaterThanOne := Find(ints, func(n int) bool { return n > 1 })
 firstNum := First(ints)
 // 1
 
+strings := FlatMap(ints, func(n int) string {
+	return []string{strconv.Itoa(n), strconv.Itoa(n + 1)}
+})
+// ["1", "2", "2", "3", "3", "4"]
+
 hasATwo := IsMember(ints, 2)
 // true
 

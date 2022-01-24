@@ -238,6 +238,30 @@ func TestFirst(t *testing.T) {
 	}
 }
 
+func TestFlatMap(t *testing.T) {
+	ints := []int{1, 2, 3}
+
+	cases := []struct {
+		in          func(int) []string
+		want        []string
+		description string
+	}{
+		{
+			func(n int) []string {
+				return []string{strconv.Itoa(n), strconv.Itoa(n + 1)}
+			},
+			[]string{"1", "2", "2", "3", "3", "4"},
+			"n, n + 1",
+		},
+	}
+	for _, c := range cases {
+		got := FlatMap(ints, c.in)
+		if !reflect.DeepEqual(got, c.want) {
+			t.Errorf("FlatMap(%v, %v) == %v, want %v", ints, c.description, got, c.want)
+		}
+	}
+}
+
 func TestIsMember(t *testing.T) {
 	ints := []int{1, 2, 3}
 

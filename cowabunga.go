@@ -133,6 +133,16 @@ func First[T any](input []T) *T {
 	}
 }
 
+// Maps each input element of type T to type K using function f,
+// where f returns []K
+func FlatMap[T, K any](input []T, f func(T) []K) []K {
+	output := make([]K, 0, len(input))
+	for _, el := range input {
+		output = append(output, f(el)...)
+	}
+	return output
+}
+
 func IsMember[T any](input []T, member T) bool {
 	for _, el := range input {
 		if reflect.DeepEqual(el, member) {
