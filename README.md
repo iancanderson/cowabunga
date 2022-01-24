@@ -45,14 +45,15 @@ sum = EachWith(ints, &sum, func(num int, result *int) {
 bigNumbers := Filter(ints, func(n int) bool { return n > 2 })
 // [3]
 
-bigNumbersIncremented := FilterMap(ints, func(n int) *int {
+bigNumbersIncremented := FilterMap(ints, func(n int) *string {
 	if n > 2 {
-		return &n + 1
+		str := strconv.Itoa(n + 1)
+		return &str
 	} else {
 		return nil
 	}
 })
-// [4]
+// ["4"]
 
 firstNum := First(ints)
 // 1
