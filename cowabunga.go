@@ -101,6 +101,19 @@ func Filter[T any](input []T, f func(T) bool) []T {
 	return output
 }
 
+// Calls the function with successive elements;
+// returns an array containing each truthy value returned by the block
+func FilterMap[T, K any](input []T, f func(T) *K) []K {
+	output := make([]K, 0, len(input))
+	for _, el := range input {
+		val := f(el)
+		if val != nil {
+			output = append(output, *val)
+		}
+	}
+	return output
+}
+
 func First[T any](input []T) *T {
 	if len(input) > 0 {
 		return &input[0]

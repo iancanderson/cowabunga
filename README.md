@@ -45,6 +45,15 @@ sum = EachWith(ints, &sum, func(num int, result *int) {
 bigNumbers := Filter(ints, func(n int) bool { return n > 2 })
 // [3]
 
+bigNumbersIncremented := FilterMap(ints, func(n int) *int {
+	if n > 2 {
+		return &n + 1
+	} else {
+		return nil
+	}
+})
+// [4]
+
 firstNum := First(ints)
 // 1
 

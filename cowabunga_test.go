@@ -164,6 +164,35 @@ func TestFilter(t *testing.T) {
 	}
 }
 
+func TestFilterMap(t *testing.T) {
+	ints := []int{1, 2, 3}
+
+	cases := []struct {
+		in          func(int) *string
+		want        []string
+		description string
+	}{
+		{
+			func(n int) *string {
+				if n > 1 {
+					str := strconv.Itoa(n + 1)
+					return &str
+				} else {
+					return nil
+				}
+			},
+			[]string{"3", "4"},
+			"n + 1 if n > 1",
+		},
+	}
+	for _, c := range cases {
+		got := FilterMap(ints, c.in)
+		if !reflect.DeepEqual(got, c.want) {
+			t.Errorf("FilterMap(%v, %v) == %v, want %v", ints, c.description, got, c.want)
+		}
+	}
+}
+
 func TestFirst(t *testing.T) {
 	one := 1
 	cases := []struct {
